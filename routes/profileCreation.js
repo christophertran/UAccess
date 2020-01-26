@@ -1,34 +1,34 @@
 var express = require('express');
+const bodyParser = require('body-parser')
 var router = express.Router();
 
+const MongoClient = require('mongodb').MongoClient;
+const assert = require('assert');
 
-// --------------------------------------
-// var mongoose = require('mongoose')
-// mongoose.connect("mongodb://localhost/tamuhack2020");
-// var db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+router.use(bodyParser.urlencoded({extendeded: true}))
 
-// var Schema = mongoose.Schema;
-// var testSchema = new Schema({
-//     "name": String
-// });
-
-
-// var testModel = mongoose.model('testEstablishments', testSchema);
-
-// var model1 = new testModel({name: 'Ihop'});
-// model1.save(function (err) {
-//     if (err) return handleError(err);
-//     // saved!
-//   });
-
-
-
-// ---------------------------------------
+// Connection URL
+const url = 'mongodb+srv://christophertran:chrismey@tamuhack2020-sybs4.mongodb.net/test?retryWrites=true&w=majority';
 
 /* GET profileCreation. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
     res.render('profileCreation', { title: 'UA Access - Create Establishment' });
 });
+
+router.post('/', (req, res) => {
+    var name = req.body.user.establishmentName;
+    var wheelchair = req.body.wheelchair;
+    async function postData() {
+        const client = await MongoClient.connect(url, { 
+          useNewUrlParser: true, 
+          useUnifiedTopology: true,
+        });
+        const db = client.db('establishmentData');
+        const items = await db.collection('establishments').insertOne({name: name, wheelchair: wheelchair});
+        client.close();
+    }
+    postData();
+    res.render('profileCreation', { title: 'UA Access - Create Establishment' });  
+})
 
 module.exports = router;
