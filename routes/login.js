@@ -12,12 +12,12 @@ const url = 'mongodb+srv://christophertran:chrismey@tamuhack2020-sybs4.mongodb.n
 
 /* GET profileCreation. */
 router.get('/', function(req, res) {
-    res.render('profileCreation', { title: 'UAccess - Create Establishment' });
+    res.render('login', { title: 'UAccess - Login' });
 });
 
 router.post('/', (req, res) => {
     var obj = req.body;
-    res.render('profileCreation', { title: 'UAccess - Create Establishment' });
+    res.render('login', { title: 'UAccess - Login' });
     async function putData() {
         const client = await MongoClient.connect(url, {
             useNewUrlParser: true,

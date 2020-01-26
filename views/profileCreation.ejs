@@ -9,6 +9,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/718a5fdb71.js" crossorigin="anonymous"></script>
 
+    <script src="/public/javascripts/logic.js"></script>
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
@@ -19,32 +20,64 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-item nav-link" href="/">Home</a>
-            <a class="nav-item nav-link" href="/profile">All Establishments</a>
+            <a class="nav-item nav-link" href="/"><i class="fas fa-home"></i> Home</a>
+            <a class="nav-item nav-link" href="/profile"><i class="fas fa-building"></i> All Establishments</a>
           </div>
           <ul class="nav navbar-nav ml-auto">
             <li>
-              <a class="nav-item nav-link" href="/profile">Login (Existing Establishments)</a>
+              <a class="nav-item nav-link" href="/login"><i class="fas fa-user"></i> Login (Existing Establishments)</a>
             </li>
             <li>
-              <a class="nav-item nav-link active" href="/profileCreation">Create (New Establishments)<span class="sr-only">(current)</span></a>
+              <a class="nav-item nav-link active" href="/profileCreation"><i class="fas fa-user-plus"></i> Create (New Establishments)<span class="sr-only">(current)</span></a>
             </li>
           </ul>
         </div>
     </nav>
-    <div class="container col-md-3">
+    <div class="container col-md-4">
         <div class="jumbotron">
             <form id="newEstablishmentForm" action="/profileCreation" method="POST">
                 <div class="form-group">
-                  <label for="establishmentNameInput">Establishment Name: </label>
-                  <input type="text" class="form-control" id="establishmentNameInput" name="newName" required>
+                  <label for="establishmentNameInput">Establishment Name:</label>
+                  <input type="text" class="form-control" id="establishmentNameInput" name="name" required>
+                </div>
+                <div class="form-group">
+                  <label for="establishmentType">Establishment Type:</label>
+                  <input type="text" class="form-control" id="establishmentType" name="type" required>
                 </div>
                 <div class="form-group">
                   <label for="wheelchairRampSelect">Wheelchair Ramp?</label>
-                  <select class="form-control" id="wheelchairRampSelect" name="newWheelchair">
-                    <option>Yes</option>
-                    <option>No</option>
+                  <select class="form-control" id="wheelchairRampSelect" name="ramps">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
                   </select>
+                </div>
+                <div class="form-group">
+                  <label for="inputAddress">Address</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address1" required>
+                </div>
+                <div class="form-group">
+                  <label for="inputAddress2">Address 2</label>
+                  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" name="address2">
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-5">
+                    <label for="inputCity">City</label>
+                    <input type="text" class="form-control" id="inputCity" name="city" required>
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputState">State</label>
+                    <select id="inputState" class="form-control" name="state" required>
+                      <option selected>Choose...</option>
+                      <option>Texas</option>
+                      <option>Oklahoma</option>
+                      <option>Louisiana</option>
+                      <option>California</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="inputZip">Zip</label>
+                    <input type="text" class="form-control" id="inputZip" name="zip" required>
+                  </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
