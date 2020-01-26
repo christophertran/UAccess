@@ -23,9 +23,13 @@ router.post('/', function(req, res, next) {
         //console.log(items);
     
         //----------------------------------------------------------------------------
+        
+        var document = items[0];
+        var good = false;
         for(var i of items) {
             if(i.name === thisName) {
                 var document = i;
+                var good = true;
                 break;
             }
         }
@@ -33,7 +37,10 @@ router.post('/', function(req, res, next) {
         client.close();
         
         var databaseArray = [document.name, document.type, document.ramps];
-        console.log(databaseArray);
+
+        if(good === false) {
+            var databaseArray = ["non", "non", "non"];
+        }
         //----------------------------------------------------------------------------
 
         res.render('profile', {title: 'UAccess - All Establishments', 
