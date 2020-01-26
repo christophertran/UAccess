@@ -30,6 +30,7 @@ var indexRouter = require('./routes/index');
 var profileRouter = require('./routes/profile');
 var profileCreationRouter = require('./routes/profileCreation');
 var loginRouter = require('./routes/login');
+var profileAllRouter = require('./routes/profileAll');
 
 var app = express();
 
@@ -47,6 +48,7 @@ app.use('/', indexRouter);
 app.use('/profile', profileRouter);
 app.use('/profileCreation', profileCreationRouter);
 app.use('/login', loginRouter);
+app.use('/profileAll', profileAllRouter);
 app.listen(5000);
 
 // catch 404 and forward to error handler
