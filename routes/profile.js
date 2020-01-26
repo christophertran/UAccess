@@ -20,7 +20,6 @@ router.post('/', function(req, res, next) {
         });
         const db = client.db('establishmentData');
         const items = await db.collection('establishments').find({}).toArray();
-        //console.log(items);
     
         //----------------------------------------------------------------------------
         
@@ -36,17 +35,21 @@ router.post('/', function(req, res, next) {
     
         client.close();
         
-        var databaseArray = [document.name, document.type, document.ramps];
+        var databaseArray = [document.name, document.type, document.address, document.ramps, document.brail, documents.toilets, documents.parking ];
 
         if(good === false) {
-            var databaseArray = ["non", "non", "non"];
+            var databaseArray = ["non", "non", "non","non","non","non","non"];
         }
         //----------------------------------------------------------------------------
 
         res.render('profile', {title: 'UAccess - All Establishments', 
                         name: databaseArray[0], 
                         type: databaseArray[1], 
-                        ramp: databaseArray[2]});
+                        address: databaseArray[2],
+                        ramps: databaseArray[3],
+                        brail: databaseArray[4],
+                        toilets: databaseArray[5],
+                        parking: databaseArray[6],});
 
         res.end()
     
