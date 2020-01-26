@@ -42,8 +42,8 @@ router.post('/', function(req, res, next) {
             var databaseArray = ["non", "non", "non"];
         }
         //----------------------------------------------------------------------------
-
-        res.render('profile', {title: 'UAccess - All Establishments', 
+ 
+       res.render('profile', {title: 'UAccess - All Establishments', 
                         name: databaseArray[0], 
                         type: databaseArray[1], 
                         ramp: databaseArray[2]});

@@ -8,6 +8,21 @@ body {
   -o-background-size: cover;
 }
 
+.form-row {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#addressForm {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+p {
+  text-align: center;
+  font: 24px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
 a {
   color: #00B7FF;
 }

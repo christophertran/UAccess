@@ -44,42 +44,43 @@
                   <label for="establishmentType">Establishment Type:</label>
                   <input type="text" class="form-control" id="establishmentType" name="type" required>
                 </div>
-                <div class="form-group">
-                  <label for="wheelchairRampSelect">Wheelchair Ramp?</label>
-                  <select class="form-control" id="wheelchairRampSelect" name="ramps">
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="inputAddress">Address</label>
-                  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address1" required>
-                </div>
-                <div class="form-group">
-                  <label for="inputAddress2">Address 2</label>
-                  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" name="address2">
-                </div>
                 <div class="form-row">
-                  <div class="form-group col-md-5">
-                    <label for="inputCity">City</label>
-                    <input type="text" class="form-control" id="inputCity" name="city" required>
-                  </div>
-                  <div class="form-group col-md-4">
-                    <label for="inputState">State</label>
-                    <select id="inputState" class="form-control" name="state" required>
-                      <option selected>Choose...</option>
-                      <option>Texas</option>
-                      <option>Oklahoma</option>
-                      <option>Louisiana</option>
-                      <option>California</option>
+                  <div class="col-md-6">
+                    <label for="brailSignsSelect">Braille Alternatives?</label>
+                    <select class="form-control" id="wheelchairRampSelect" name="braille">
+                      <option value="1">yes</option>
+                      <option value="0">no</option>
                     </select>
                   </div>
-                  <div class="form-group col-md-3">
-                    <label for="inputZip">Zip</label>
-                    <input type="text" class="form-control" id="inputZip" name="zip" required>
+                  <div class="col-md-6">
+                    <label for="wheelchairRampSelect">Wheelchair Ramp?</label>
+                    <select class="form-control" id="wheelchairRampSelect" name="ramps">
+                      <option>yes</option>
+                      <option>no</option>
+                    </select>
                   </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="form-row">
+                  <div class="col-md-6">
+                    <label for="accesibleToilets">Accessible Toilets?</label>
+                    <select class="form-control" id="accesibleToilets" name="toilets">
+                      <option>yes</option>
+                      <option>no</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="accessibleParking">Handicap Parking?</label>
+                    <select class="form-control" id="accessibleParking" name="parking">
+                      <option>yes</option>
+                      <option>no</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group" id="addressForm">
+                  <label for="inputAddress">Address</label>
+                  <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St, City, State, Zip" name="address1" required>
+                </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>
