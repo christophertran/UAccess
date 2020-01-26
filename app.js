@@ -19,7 +19,7 @@ async function pullData() {
   });
   const db = client.db('establishmentData');
   const items = await db.collection('establishments').find({}).toArray();
-  console.log(items);
+  //console.log(items);
   client.close();
 }
 
@@ -29,6 +29,7 @@ pullData();
 var indexRouter = require('./routes/index');
 var profileRouter = require('./routes/profile');
 var profileCreationRouter = require('./routes/profileCreation');
+var loginRouter = require('./routes/login');
 
 var app = express();
 
@@ -45,6 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/profile', profileRouter);
 app.use('/profileCreation', profileCreationRouter);
+app.use('/login', loginRouter);
 app.listen(5000);
 
 // catch 404 and forward to error handler
