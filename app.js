@@ -6,6 +6,8 @@ var logger = require('morgan');
 var mongoose = require('mongoose');
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
+const { body,validationResult } = require('express-validator/check');
+const { sanitizeBody } = require('express-validator/filter');
 
 // Connection URL
 const url = 'mongodb+srv://christophertran:chrismey@tamuhack2020-sybs4.mongodb.net/test?retryWrites=true&w=majority';
@@ -21,6 +23,7 @@ async function pullData() {
   client.close();
 }
 
+//pulls data from database
 pullData();
 
 var indexRouter = require('./routes/index');
