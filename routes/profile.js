@@ -35,7 +35,7 @@ router.post('/', function(req, res, next) {
     
         client.close();
         
-        var databaseArray = [document.name, document.type, document.address, document.ramps, document.brail, documents.toilets, documents.parking ];
+        var databaseArray = [document.name, document.type, document.braille, document.ramps, document.toilets, document.parking, document.address];
 
         if(good === false) {
             var databaseArray = ["non", "non", "non","non","non","non","non"];
@@ -45,11 +45,11 @@ router.post('/', function(req, res, next) {
        res.render('profile', {title: 'UAccess - All Establishments', 
                         name: databaseArray[0], 
                         type: databaseArray[1], 
-                        address: databaseArray[2],
+                        braille: databaseArray[2],
                         ramps: databaseArray[3],
-                        brail: databaseArray[4],
-                        toilets: databaseArray[5],
-                        parking: databaseArray[6],});
+                        toilets: databaseArray[4],
+                        parking: databaseArray[5],
+                        address: databaseArray[6]});
 
         res.end()
     
