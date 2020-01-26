@@ -16,19 +16,19 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', (req, res) => {
-    var name = req.body.user.establishmentName;
-    var wheelchair = req.body.wheelchair;
-    async function postData() {
-        const client = await MongoClient.connect(url, { 
-          useNewUrlParser: true, 
-          useUnifiedTopology: true,
-        });
-        const db = client.db('establishmentData');
-        const items = await db.collection('establishments').insertOne({name: name, wheelchair: wheelchair});
-        client.close();
-    }
-    postData();
-    res.render('profileCreation', { title: 'UA Access - Create Establishment' });  
-})
+    var obj = req.body;
+    console.log(obj);
+    res.render('profileCreation', { title: 'UA Access - Create Establishment' });
+    // async function putData() {
+    //     const client = await MongoClient.connect(url, {
+    //         useNewUrlParser: true,
+    //         useUnifiedTopology: true,
+    //     });
+    // const db = client.db('establishmentData');
+    // const items = await db.collection('establishments').find({}).toArray();
+    // console.log(items);
+    // client.close();
+    // }
+});
 
 module.exports = router;
