@@ -1,2 +1,2 @@
-# ROHIT AND CHRIS ARE STEGOSAURUSES
-## They fight for justice!
+# Chris Tran, Rohit Barichello
+## TAMUHack 2020
