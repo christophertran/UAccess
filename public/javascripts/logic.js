@@ -15,5 +15,8 @@ function chooseImage() {
         'https://images.unsplash.com/photo-1510146758428-e5e4b17b8b6a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'
     ]
     var randImg = imgs[Math.floor(Math.random() * imgs.length)];
-    document.body.style.background = url(randImg);
- }
+    console.log(randImg);
+    //document.body.style.backgroundImage = url(randImg);
+}
+
+chooseImage();
