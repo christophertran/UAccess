@@ -17,18 +17,17 @@ router.get('/', function(req, res) {
 
 router.post('/', (req, res) => {
     var obj = req.body;
-    console.log(obj);
     res.render('profileCreation', { title: 'UA Access - Create Establishment' });
-    // async function putData() {
-    //     const client = await MongoClient.connect(url, {
-    //         useNewUrlParser: true,
-    //         useUnifiedTopology: true,
-    //     });
-    // const db = client.db('establishmentData');
-    // const items = await db.collection('establishments').find({}).toArray();
-    // console.log(items);
-    // client.close();
-    // }
+    async function putData() {
+        const client = await MongoClient.connect(url, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+    const db = client.db('establishmentData');
+    const items = await db.collection('establishments').insert(obj);
+    client.close();
+    }
+    putData();
 });
 
 module.exports = router;
