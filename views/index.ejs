@@ -11,17 +11,19 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <div class="container jumbotron">
-      <div id=header>
-        <h1 ><%= title %></h1>
+    <div class="container">
+      <div class="jumbotron">
+        <div id=header>
+          <h1 class="display-3"><%= title %></h1>
+        </div>
+    
+        <div id=body>
+          <p>Search for establishments: <input type="text" placeholder="Search..."></p>
+    
+          <p>Don't see your establishment here? <a href="/profileCreation">Add yourself</a></p>
+    
+          <p><a href="/profile">Click here to view profile page</a></p>
       </div>
-  
-      <div id=body>
-        <p>Search for establishments: <input type="text" placeholder="Search..."></p>
-  
-        <p>Don't see your establishment here? <a href="/profileCreation">Add yourself</a></p>
-  
-        <p><a href="/profile">Click here to view profile page</a></p>
       </div>
     </div>
   </body>
