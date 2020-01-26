@@ -1,34 +1,34 @@
 var express = require('express');
+const bodyParser = require('body-parser')
 var router = express.Router();
 
+const MongoClient = require('mongodb').MongoClient;
+const assert = require('assert');
 
-// --------------------------------------
-// var mongoose = require('mongoose')
-// mongoose.connect("mongodb://localhost/tamuhack2020");
-// var db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+router.use(bodyParser.urlencoded({extendeded: true}))
 
-// var Schema = mongoose.Schema;
-// var testSchema = new Schema({
-//     "name": String
-// });
-
-
-// var testModel = mongoose.model('testEstablishments', testSchema);
-
-// var model1 = new testModel({name: 'Ihop'});
-// model1.save(function (err) {
-//     if (err) return handleError(err);
-//     // saved!
-//   });
-
-
-
-// ---------------------------------------
+// Connection URL
+const url = 'mongodb+srv://christophertran:chrismey@tamuhack2020-sybs4.mongodb.net/test?retryWrites=true&w=majority';
 
 /* GET profileCreation. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res) {
     res.render('profileCreation', { title: 'UA Access - Create Establishment' });
+});
+
+router.post('/', (req, res) => {
+    var obj = req.body;
+    console.log(obj);
+    res.render('profileCreation', { title: 'UA Access - Create Establishment' });
+    // async function putData() {
+    //     const client = await MongoClient.connect(url, {
+    //         useNewUrlParser: true,
+    //         useUnifiedTopology: true,
+    //     });
+    // const db = client.db('establishmentData');
+    // const items = await db.collection('establishments').find({}).toArray();
+    // console.log(items);
+    // client.close();
+    // }
 });
 
 module.exports = router;

@@ -32,9 +32,6 @@ var profileCreationRouter = require('./routes/profileCreation');
 
 var app = express();
 
-mongoose.connect("mongodb://localhost/UAccess");
-mongoose.model('establishments', {name: String});
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
