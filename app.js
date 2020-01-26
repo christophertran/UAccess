@@ -4,6 +4,24 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+const MongoClient = require('mongodb').MongoClient;
+const assert = require('assert');
+
+// Connection URL
+const url = 'mongodb+srv://christophertran:chrismey@tamuhack2020-sybs4.mongodb.net/test?retryWrites=true&w=majority';
+
+async function pullData() {
+  const client = await MongoClient.connect(url, { 
+    useNewUrlParser: true, 
+    useUnifiedTopology: true,
+  });
+  const db = client.db('establishmentData');
+  const items = await db.collection('establishments').find({}).toArray();
+  console.log(items);
+  client.close();
+}
+
+pullData();
 
 var indexRouter = require('./routes/index');
 var profileRouter = require('./routes/profile');
@@ -13,13 +31,6 @@ var app = express();
 
 mongoose.connect("mongodb://localhost/UAccess");
 mongoose.model('establishments', {name: String});
-
-// //Set up mongoose connection
-// var mongoose = require('mongoose');
-// var mongoDB = 'mongodb+srv://rohitbarichello:chrisway@tamuhack2020-sybs4.mongodb.net/local_library?retryWrites=true&w=majority';
-// mongoose.connect(mongoDB, { useNewUrlParser: true });
-// var db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
