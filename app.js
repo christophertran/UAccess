@@ -4,6 +4,27 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require('mongoose');
+const MongoClient = require('mongodb').MongoClient;
+const assert = require('assert');
+const { body,validationResult } = require('express-validator/check');
+const { sanitizeBody } = require('express-validator/filter');
+
+// Connection URL
+const url = 'mongodb+srv://christophertran:chrismey@tamuhack2020-sybs4.mongodb.net/test?retryWrites=true&w=majority';
+
+async function pullData() {
+  const client = await MongoClient.connect(url, { 
+    useNewUrlParser: true, 
+    useUnifiedTopology: true,
+  });
+  const db = client.db('establishmentData');
+  const items = await db.collection('establishments').find({}).toArray();
+  console.log(items);
+  client.close();
+}
+
+//pulls data from database
+pullData();
 
 var indexRouter = require('./routes/index');
 var profileRouter = require('./routes/profile');
@@ -24,6 +45,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/profile', profileRouter);
 app.use('/profileCreation', profileCreationRouter);
+app.listen(5000);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
