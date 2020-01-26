@@ -21,12 +21,27 @@ router.get('/', function(req, res, next) {
     res.render('profile', {title: 'UAccess - All Establishments', name: "PLACEHOLDER", type: "PLACEHOLDER", ramp: "PLACEHOLDER"});
 });
 
+function processData(data) {
+    var estn = "PLACEHOLDER";
+    var estt = "PLACEHOLDER";
+    var ram = "PLACEHOLDER"; 
+
+    return estn, estt, ram;
+}
+
 router.post('/', function(req, res, next) {
     console.log("IT WORKED")
     var thisName = req.body.estName;
     profiles = pullData()
+    // var establishmentName = "PLACEHOLDER";
+    // var establishmentType = "PLACEHOLDER";
+    // var hasRamps = "PLACEHOLDER";
+    var establishmentName, establishmentType, hasRamps = processData(profiles);
     
-    res.render('profile', {title: 'UAccess - All Establishments', name: thisName, type: "PLACEHOLDER", ramp: "PLACEHOLDER"});
+    res.render('profile', {title: 'UAccess - All Establishments', 
+                            name: establishmentName, 
+                            type: establishmentType, 
+                            ramp: hasRamps});
     res.end()
   })
 
