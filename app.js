@@ -48,6 +48,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/profile', profileRouter);
 app.use('/profileCreation', profileCreationRouter);
+app.listen(5000);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
