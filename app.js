@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var mongoos = require('mongoose');
+var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 var profileRouter = require('./routes/profile');
@@ -11,7 +11,15 @@ var profileCreationRouter = require('./routes/profileCreation');
 
 var app = express();
 
-mongoos.connect("mongodb://localhost/UAccess");
+mongoose.connect("mongodb://localhost/UAccess");
+mongoose.model('establishments', {name: String});
+
+// //Set up mongoose connection
+// var mongoose = require('mongoose');
+// var mongoDB = 'mongodb+srv://rohitbarichello:chrisway@tamuhack2020-sybs4.mongodb.net/local_library?retryWrites=true&w=majority';
+// mongoose.connect(mongoDB, { useNewUrlParser: true });
+// var db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
